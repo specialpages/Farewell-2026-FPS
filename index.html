@@ -75,8 +75,8 @@ body{background:radial-gradient(ellipse at 10% 8%,#ffe2f0 0,transparent 32%),rad
 <div class="lightbox" id="lightbox"><button id="closeLightbox" aria-label="Close">×</button><img id="lightboxImg" alt="School memory"></div>
 <script>
 
-const photos=["photos/memory-01.jpg","photos/memory-02.jpg","photos/memory-03.jpg","photos/memory-04.jpg","photos/memory-05.jpg","photos/memory-06.jpg","photos/memory-07.jpg","photos/memory-08.jpg","photos/memory-09.jpg","photos/memory-10.jpg"];
-const captions=["the whole gang ♡","a day to remember","between the bells","the little things","together, always","one for the album","our favourite chaos","the good old days","class of 2026","until next time"];
+const photos=["photos/memories/memory-01.jpg","photos/memories/memory-02.jpg","photos/memories/memory-03.jpg","photos/memories/memory-04.jpg","photos/memories/memory-05.jpg","photos/memories/memory-06.jpg","photos/memories/memory-07.jpg"];
+const captions=["Our school, our people ♡","The boys, together","Another day to remember","Forever FPS","The memories we made","Our girls, our memories","Until we meet again"];
 const gallery=document.getElementById('galleryGrid'),lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightboxImg');
 photos.forEach((src,i)=>{const fig=document.createElement('figure');fig.className='shot reveal';const img=document.createElement('img');img.src=src;img.alt=captions[i];img.loading='lazy';img.onerror=()=>{img.style.opacity='.08'};const cap=document.createElement('figcaption');cap.textContent=captions[i];fig.append(img,cap);fig.onclick=()=>{lbImg.src=src;lb.classList.add('open')};gallery.append(fig)});
 ["photos/friends/hero-01.jpg","photos/friends/hero-02.jpg","photos/friends/hero-03.jpg"].forEach((src,i)=>{const im=document.querySelectorAll('.polaroid img')[i];im.onerror=()=>{im.style.opacity='.08'}});
