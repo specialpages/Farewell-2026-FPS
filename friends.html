@@ -11,8 +11,8 @@ const girls=[
 {name:"Mursaleen",photo:"photos/friends/friend-02.webp"},
 {name:"Khansa",photo:"photos/friends/friend-03.webp"},
 {name:"Fatima",photo:"photos/friends/friend-04.webp"},
-{photo:null,line:"Sorry, we don’t have your photos because you’re never present anywhere!"},
-{photo:null,line:"Sorry, we don’t have your photos because you’re never present anywhere!"}
+{name:"Ronak",photo:null,line:"Sorry, we don’t have your photos because you’re never present anywhere!"},
+{name:"Muskan",photo:null,line:"Sorry, we don’t have your photos because you’re never present anywhere!"}
 ];
 function renderCards(people,targetId){
  const grid=document.getElementById(targetId);
@@ -21,7 +21,7 @@ function renderCards(people,targetId){
   c.innerHTML='<div class="inner"><div class="frame"><div class="photo"></div><div class="name"></div></div></div>';
   const photo=c.querySelector('.photo');
   if(p.photo){const img=document.createElement("img");img.src=p.photo;img.alt=p.name;img.loading="lazy";img.onerror=()=>img.style.opacity=".08";photo.append(img);}
-  else{photo.classList.add("missing-photo");photo.innerHTML='<span>🫥</span><small>LAST SEEN: INVITED</small>';}
+  else{photo.classList.add("missing-photo");photo.innerHTML='<span>🫥</span><small>'+p.line+'</small>';}
   c.querySelector('.name').textContent=p.name||p.line;
   c.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.querySelector('.inner').style.transform='rotateY('+(x*18)+'deg) rotateX('+(-y*14)+'deg) translateY(-8px)'});
   c.addEventListener('pointerleave',()=>c.querySelector('.inner').style.transform='');
