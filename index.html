@@ -67,41 +67,14 @@ body{background:radial-gradient(ellipse at 10% 8%,#ffe2f0 0,transparent 32%),rad
 .music-entry-card button:active{transform:translateY(3px);box-shadow:0 3px 0 #c7b7e8}
 
 
-/* Interactive Class of 2026 digital yearbook */
-.yearbook-section{background:linear-gradient(135deg,#f7e8ef,#eee8ff 52%,#e1f4f1);overflow:hidden}
-.yearbook-stage{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);gap:clamp(24px,5vw,60px);align-items:center}
-.yearbook-book{min-height:480px;position:relative;perspective:1400px;display:grid;place-items:center}
-.yearbook-page{width:min(100%,520px);min-height:430px;padding:20px;background:#fffdf8;border-radius:8px 22px 22px 8px;box-shadow:18px 20px 45px #55456b2b;position:relative;transform-origin:left center;transition:transform .55s,opacity .35s;overflow:hidden}
-.yearbook-page:before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:#eadde4}
-.yearbook-cover{min-height:430px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;padding:35px 28px;border:1px solid #eee1e8;background:linear-gradient(145deg,#f7d8e5,#e4dcfa 58%,#d7f0ed)}
-.yearbook-cover .cover-mark{font:16px var(--hand);letter-spacing:.08em;color:#765e8d}
-.yearbook-cover h3{font:clamp(3.1rem,7vw,5.6rem)/.86 var(--serif);letter-spacing:-.05em;margin:20px 0}
-.yearbook-cover h3 em{color:#a66e92;font-weight:400}
-.yearbook-cover p{font:17px var(--hand);color:#756780}
-.yearbook-cover .cover-footer{font:12px var(--sans);font-weight:700;letter-spacing:.18em;color:#766b87}
-.yearbook-inside{display:flex;flex-direction:column;gap:14px}
-.yearbook-inside img{width:100%;height:290px;object-fit:cover;background:#eee5ef;border-radius:4px}
-.yearbook-inside h3{font:30px var(--serif);margin:0;color:#40364d}
-.yearbook-inside p{font:16px/1.6 var(--hand);color:#7b6d80;margin:0}
-.yearbook-page.turning{transform:rotateY(-13deg);opacity:.35}
-.yearbook-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
-.yearbook-controls button,.yearbook-start{border:0;border-radius:30px;padding:13px 19px;background:#403453;color:#fff;font:700 12px var(--sans);cursor:pointer;box-shadow:0 5px 0 #c4b4d8}
-.yearbook-controls button:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
-.yearbook-count{font:14px var(--hand);color:#776b85;min-width:74px;text-align:center}
-.yearbook-copy .eyebrow{font:16px var(--hand);color:#a16f91}
-.yearbook-copy h3{font:clamp(2.8rem,5vw,4.8rem)/.94 var(--serif);margin:13px 0 18px;letter-spacing:-.04em}
-.yearbook-copy p{font-size:14px;line-height:1.9;color:#71687e}
-.yearbook-copy .yearbook-start{margin-top:12px;background:#a66e92}
-@media(max-width:760px){.yearbook-stage{grid-template-columns:1fr}.yearbook-book{min-height:420px}.yearbook-page{min-height:390px}.yearbook-cover{min-height:390px}.yearbook-inside img{height:245px}.yearbook-copy{text-align:center}.yearbook-copy p{max-width:500px;margin:0 auto}}
-
 /* Background music control */
 .music-toggle{position:fixed;right:18px;bottom:18px;z-index:70;border:1px solid #ffffffaa;border-radius:999px;padding:12px 17px;background:#343044;color:#fff;font:600 12px var(--sans);box-shadow:0 8px 24px #34304433;cursor:pointer}.music-toggle:focus-visible{outline:3px solid #bd777f;outline-offset:3px}
 </style></head>
 <body>
 <div class="loader" id="loader"><div><b>Dear Class of<br>2026 ♡</b><small>FAIZAN PUBLIC HR. SEC. SCHOOL</small></div></div>
 <div class="music-entry" id="musicEntry"><div class="music-entry-card"><h2>One little song<br>for our memories ♡</h2><p>Tap below to enter the farewell website with our class song.</p><button id="enterWithMusic" type="button">♫ Enter with music</button></div></div>
-<nav><a class="logo" href="#home">FPS ✿ 2026</a><div class="links"><a href="#story">Our story</a><a href="#moments">Memories</a><a href="#yearbook">Yearbook</a><a href="friends.html">Friends ↗</a><a href="#gallery">Gallery</a><a href="#videos">Videos</a></div></nav>
-<header class="hero" id="home"><div class="hero-copy"><span class="kicker">✿ A little piece of our school days</span><h1>And just<br>like that,<br><em>we grew up.</em></h1><p>To the classrooms that heard our laughter, the corridors that hold our secrets, and the people who made every ordinary day feel special.</p><div class="hero-actions"><a class="pill" href="#story">Open our yearbook ↗</a><span class="hand-note">Class of 2026 ♡</span></div></div>
+<nav><a class="logo" href="#home">FPS ✿ 2026</a><div class="links"><a href="#story">Our story</a><a href="#moments">Memories</a><a href="friends.html">Friends ↗</a><a href="#gallery">Gallery</a><a href="#videos">Videos</a></div></nav>
+<header class="hero" id="home"><div class="hero-copy"><span class="kicker">✿ A little piece of our school days</span><h1>And just<br>like that,<br><em>we grew up.</em></h1><p>To the classrooms that heard our laughter, the corridors that hold our secrets, and the people who made every ordinary day feel special.</p><div class="hero-actions"><a class="pill" href="#story">Open our story ↗</a><span class="hand-note">Class of 2026 ♡</span></div></div>
 <div class="collage"><span class="sticker s1">✿</span><span class="sticker s2">♡</span><span class="sticker s3">✧</span><div class="polaroid one"><img src="photos/friends/hero-01.jpg" alt="Our school memories"></div><div class="polaroid two"><img src="photos/friends/hero-02.jpg" alt="Friends together"></div><div class="polaroid three"><img src="photos/friends/hero-03.jpg" alt="A school memory"><span>Forever FPS</span></div></div></header>
 <div class="ticker"><div><span>✿ WE WERE YOUNG</span><span>♡ WE WERE TOGETHER</span><span>✧ WE MADE IT COUNT</span><span>☁ WE'LL ALWAYS REMEMBER</span><span>✿ WE WERE YOUNG</span><span>♡ WE WERE TOGETHER</span><span>✧ WE MADE IT COUNT</span><span>☁ WE'LL ALWAYS REMEMBER</span></div></div>
 <section class="note-section" id="story"><div class="section-top reveal"><div><div class="eyebrow">01 · A letter to us</div><h2>Some memories<br>never graduate.</h2></div><p>Before we turn the page, let's keep this one close. A little thank you to the place that became a part of us.</p></div><div class="note-card reveal"><p>“We thought we were just passing time between bells. Little did we know, we were collecting <em>the best days of our lives.</em>”</p><small>— With love, the Class of 2026 ♡</small></div></section>
@@ -112,18 +85,6 @@ body{background:radial-gradient(ellipse at 10% 8%,#ffe2f0 0,transparent 32%),rad
 <article class="moment reveal"><span class="no">chapter four ☁</span><h3>Almost there</h3><p>Exams, late-night study, nervous smiles and shared notes.</p></article>
 <article class="moment reveal"><span class="no">chapter five ♡</span><h3>One last day</h3><p>One last photo, one last walk, memories for a lifetime.</p></article></div></section>
 
-<section class="yearbook-section" id="yearbook">
-<div class="section-top reveal"><div><div class="eyebrow">A keepsake for the Class of 2026 ♡</div><h2>Our little<br>yearbook.</h2></div><p>Turn the pages slowly. Every photograph holds a day, a laugh, and a piece of the people who made FPS feel like home.</p></div>
-<div class="yearbook-stage reveal">
-  <div class="yearbook-book">
-    <article class="yearbook-page" id="yearbookPage" aria-live="polite">
-      <div class="yearbook-cover"><div class="cover-mark">✿ FAIZAN PUBLIC HR. SEC. SCHOOL ✿</div><div><h3>THE<br><em>Class of</em><br>2026</h3><p>Our days. Our people. Our forever.</p></div><div class="cover-footer">A LITTLE MORE FOREVER · EST. WITH LOVE</div></div>
-    </article>
-    <div class="yearbook-controls"><button id="yearbookPrev" type="button" disabled>← Previous</button><span class="yearbook-count" id="yearbookCount">Cover</span><button id="yearbookNext" type="button">Open book →</button></div>
-  </div>
-  <div class="yearbook-copy"><div class="eyebrow">A page from our story</div><h3>Some days deserve to be kept forever.</h3><p>This little book is made from the memories already living in our photo album. Use the arrows to turn each page and revisit the moments that made this year ours.</p><button class="yearbook-start" id="yearbookOpen" type="button">Start turning pages ♡</button></div>
-</div>
-</section>
 <section id="gallery" style="background:#fbf1e8"><div class="section-top reveal"><div><div class="eyebrow">04 · The photo album</div><h2>Little moments.<br>Big feelings.</h2></div><p>Our favourite photos, forever kept like little treasures. Replace the sample image files with your own.</p></div><figure class="gallery-feature"><img src="photos/memories/group-photo.jpg" alt="Our class, together" loading="lazy"><figcaption>All of us, one beautiful memory ♡</figcaption></figure><div class="gallery" id="galleryGrid"></div></section>
 <section class="funny-moments" id="funny-moments">
   <div class="section-top reveal"><div><div class="eyebrow">A little extra chaos ✿</div><h2>The funny side<br>of FPS.</h2></div><p>Unplanned poses, embarrassing moments, inside jokes and clips that still make us laugh. The memories we’ll never let each other forget.</p></div>
@@ -145,44 +106,6 @@ const funnyVideos=[{src:"videos/funny/funny-01.mp4",title:"A classroom classic",
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.1});
 const funnyPhotoGrid=document.getElementById('funnyPhotoGrid');funnyPhotos.forEach(item=>{const fig=document.createElement('figure');fig.className='funny-shot reveal';const img=document.createElement('img');img.src=item.src;img.alt=item.caption;img.loading='lazy';img.onerror=()=>fig.remove();const cap=document.createElement('figcaption');cap.textContent=item.caption;fig.append(img,cap);fig.onclick=()=>{lbImg.src=item.src;lb.classList.add('open')};fig.style.cursor='zoom-in';funnyPhotoGrid.append(fig);io.observe(fig)});
 const funnyVideoGrid=document.getElementById('funnyVideoGrid');funnyVideos.forEach(item=>{const card=document.createElement('article');card.className='funny-video reveal';const video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='metadata';const source=document.createElement('source');source.src=item.src;source.type='video/mp4';source.onerror=()=>card.remove();video.append(source);card.append(video);funnyVideoGrid.append(card);io.observe(card)});
-
-const yearbookEntries=[
- {src:"photos/memories/group-photo.jpg",title:"All of us, one memory",caption:"Different stories, one beautiful chapter. No matter where life takes us, a little part of us will always belong here."},
- {src:"photos/memories/memory-05.jpg",title:"Together, always",caption:"The people made the place. The ordinary days became the ones we wish we could relive."},
- {src:"photos/memories/memory-06.jpg",title:"By the lake",caption:"A moment outside the classroom, a thousand little things to remember."},
- {src:"photos/memories/memory-07.jpg",title:"Our school, our people",caption:"Familiar faces, shared jokes, and memories that will keep finding their way back to us."},
- {src:"photos/memories/memory-08.jpg",title:"The boys, together",caption:"The laughter, the friendship, and all the stories behind one photograph."},
- {src:"photos/memories/memory-09.jpg",title:"A day to remember",caption:"Some days pass. Some days stay with us long after the final bell."},
- {src:"photos/memories/memory-10.jpg",title:"Forever FPS",caption:"A school can be a building, but the people are what make it feel like home."},
- {src:"photos/memories/memory-11.jpg",title:"One for the books",caption:"A snapshot of a chapter we were lucky enough to share."},
- {src:"photos/memories/memory-12.jpg",title:"Never a dull moment",caption:"A little chaos, a lot of laughter, and a thousand reasons to smile."},
- {src:"photos/memories/memory-13.jpg",title:"Our girls, our memories",caption:"The friendships, the smiles, and the moments we will carry into every new beginning."}
-];
-(()=>{
- const page=document.getElementById('yearbookPage'),prev=document.getElementById('yearbookPrev'),next=document.getElementById('yearbookNext'),count=document.getElementById('yearbookCount'),open=document.getElementById('yearbookOpen');
- if(!page||!prev||!next||!count||!open)return;
- let index=-1;
- const render=()=>{
-   page.classList.add('turning');
-   setTimeout(()=>{
-     if(index<0){page.innerHTML='<div class="yearbook-cover"><div class="cover-mark">✿ FAIZAN PUBLIC HR. SEC. SCHOOL ✿</div><div><h3>THE<br><em>Class of</em><br>2026</h3><p>Our days. Our people. Our forever.</p></div><div class="cover-footer">A LITTLE MORE FOREVER · EST. WITH LOVE</div></div>';count.textContent='Cover'}
-     else{
-       const item=yearbookEntries[index];
-       page.innerHTML='';
-       const inside=document.createElement('div');inside.className='yearbook-inside';
-       const img=document.createElement('img');img.src=item.src;img.alt=item.title;img.loading='lazy';img.onerror=()=>{img.style.display='none'};
-       const title=document.createElement('h3');title.textContent=item.title;
-       const caption=document.createElement('p');caption.textContent=item.caption;
-       inside.append(img,title,caption);page.append(inside);count.textContent=(index+1)+' / '+yearbookEntries.length;
-     }
-     prev.disabled=index<0;next.disabled=index>=yearbookEntries.length-1;next.textContent=index===-1?'Open book →':index===yearbookEntries.length-1?'The end ♡':'Next page →';
-     page.classList.remove('turning');
-   },120);
- };
- prev.addEventListener('click',()=>{if(index>=0){index--;render()}});
- next.addEventListener('click',()=>{if(index<yearbookEntries.length-1){index++;render()}});
- open.addEventListener('click',()=>{index=0;render();document.getElementById('yearbook').scrollIntoView({behavior:'smooth',block:'center'})});
-})();
 
 const photos=["photos/memories/memory-05.jpg","photos/memories/memory-06.jpg","photos/memories/memory-07.jpg","photos/memories/memory-08.jpg","photos/memories/memory-09.jpg","photos/memories/memory-10.jpg","photos/memories/memory-11.jpg","photos/memories/memory-12.jpg","photos/memories/memory-13.jpg"];
 const captions=["Together, always","By the lake","Our school, our people","The boys, together","A day to remember","Forever FPS","One for the books","Never a dull moment","Our girls, our memories"];
