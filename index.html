@@ -75,8 +75,8 @@ body{background:radial-gradient(ellipse at 10% 8%,#ffe2f0 0,transparent 32%),rad
 <div class="lightbox" id="lightbox"><button id="closeLightbox" aria-label="Close">×</button><img id="lightboxImg" alt="School memory"></div>
 <script>
 
-const photos=["photos/memories/memory-01.jpg","photos/memories/memory-02.jpg","photos/memories/memory-03.jpg","photos/memories/memory-04.jpg","photos/memories/memory-05.jpg","photos/memories/memory-06.jpg","photos/memories/memory-07.jpg"];
-const captions=["Our school, our people ♡","The boys, together","Another day to remember","Forever FPS","The memories we made","Our girls, our memories","Until we meet again"];
+const photos=["photos/memories/memory-01.jpg","photos/memories/memory-02.jpg","photos/memories/memory-03.jpg","photos/memories/memory-04.jpg","photos/memories/memory-05.jpg","photos/memories/memory-06.jpg","photos/memories/memory-07.jpg","photos/memories/memory-08.jpg","photos/memories/memory-09.jpg","photos/memories/memory-10.jpg","photos/memories/memory-11.jpg","photos/memories/memory-12.jpg","photos/memories/memory-13.jpg"];
+const captions=["A lesson to remember ♡","Little classroom moments","Caught in the moment","A circle of friends","Together, always","By the lake","Our school, our people","The boys, together","A day to remember","Forever FPS","One for the books","Never a dull moment","Our girls, our memories"];
 const gallery=document.getElementById('galleryGrid'),lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightboxImg');
 photos.forEach((src,i)=>{const fig=document.createElement('figure');fig.className='shot reveal';const img=document.createElement('img');img.src=src;img.alt=captions[i];img.loading='lazy';img.onerror=()=>{img.style.opacity='.08'};const cap=document.createElement('figcaption');cap.textContent=captions[i];fig.append(img,cap);fig.onclick=()=>{lbImg.src=src;lb.classList.add('open')};gallery.append(fig)});
 ["photos/friends/hero-01.jpg","photos/friends/hero-02.jpg","photos/friends/hero-03.jpg"].forEach((src,i)=>{const im=document.querySelectorAll('.polaroid img')[i];im.onerror=()=>{im.style.opacity='.08'}});
