@@ -105,8 +105,8 @@ const form=document.getElementById('wishForm'),notes=document.getElementById('no
 document.getElementById('celebrate').onclick=()=>{for(let i=0;i<70;i++){const s=document.createElement('span');s.textContent=['✿','♡','✧','✦'][i%4];s.style.cssText='position:fixed;z-index:100;left:'+Math.random()*100+'vw;top:-30px;font-size:'+(16+Math.random()*24)+'px;color:'+['#d88b9a','#8c80bd','#e2bd5e','#82a9b7'][i%4]+';transition:top 2.5s linear,transform 2.5s linear;pointer-events:none';document.body.append(s);requestAnimationFrame(()=>{s.style.top='110vh';s.style.transform='rotate(500deg)'});setTimeout(()=>s.remove(),2700)}};
 document.querySelectorAll('.reveal').forEach(e=>io.observe(e));addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),550));setTimeout(()=>document.getElementById('loader').classList.add('hide'),2300);
 
-// Background music: browsers require a visitor gesture before audible playback.
-(()=>{
+// Background music: attempt autoplay on entry; browsers may require a visitor gesture.
+(()=> {
  const music=document.getElementById('bgMusic');
  const toggle=document.getElementById('musicToggle');
  if(!music||!toggle)return;
@@ -114,7 +114,7 @@ document.querySelectorAll('.reveal').forEach(e=>io.observe(e));addEventListener(
  const videoIsPlaying=()=>Array.from(document.querySelectorAll('video')).some(v=>!v.paused&&!v.ended);
  const syncLabel=()=>{toggle.textContent=music.paused?'♫ Play music':'♫ Music on';toggle.setAttribute('aria-label',music.paused?'Turn background music on':'Turn background music off')};
  const playIfAllowed=()=>{if(!wanted||videoIsPlaying())return;music.play().then(()=>{started=true;syncLabel()}).catch(()=>syncLabel())};
- const firstGesture=()=>{if(!started&&wanted){playIfAllowed()}document.removeEventListener('pointerdown',firstGesture,true);document.removeEventListener('keydown',firstGesture,true)};
+ const firstGesture=()=>{if(!started&&wanted)playIfAllowed();document.removeEventListener('pointerdown',firstGesture,true);document.removeEventListener('keydown',firstGesture,true)};
  document.addEventListener('pointerdown',firstGesture,true);document.addEventListener('keydown',firstGesture,true);
  toggle.addEventListener('click',()=>{if(!music.paused){wanted=false;music.pause();syncLabel()}else{wanted=true;started=true;playIfAllowed()}});
  document.addEventListener('play',e=>{if(e.target instanceof HTMLVideoElement){music.pause();syncLabel()}},true);
@@ -123,5 +123,8 @@ document.querySelectorAll('.reveal').forEach(e=>io.observe(e));addEventListener(
  document.addEventListener('ended',e=>{if(e.target instanceof HTMLVideoElement)resume()},true);
  document.addEventListener('visibilitychange',()=>{if(document.hidden)music.pause();else if(started)resume()});
  syncLabel();
+ // Try immediately when the visitor enters. If the browser blocks audible autoplay,
+ // the first tap/key press starts it without requiring the music button.
+ playIfAllowed();
 })();
 </script></body></html>
