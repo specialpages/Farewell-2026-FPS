@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farewell | Forever Friends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Poppins:wght@300;400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020816; --b0:#061537; --b1:#0b3a9e; --b2:#1f6bff; --b3:#00c8ff; --b4:#8fe3ff;
+  --glass:rgba(120,180,255,.08); --line:rgba(130,190,255,.22);
+  --text:#eaf4ff; --muted:#9bb6dd;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Syne',sans-serif;font-weight:800}
+a{color:inherit}
+
+/* ---------- MOVING BACKGROUND (GPU friendly) ---------- */
+.bg{position:fixed;inset:0;z-index:-3;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#0a2a73 0%,var(--bg) 65%)}
+.bg i{position:absolute;width:90vmax;height:90vmax;border-radius:50%;will-change:transform;
+  background:radial-gradient(circle,var(--c) 0%,transparent 60%);opacity:.5}
+.bg i:nth-child(1){--c:#1f6bff;top:-40vmax;left:-30vmax;animation:drift1 22s ease-in-out infinite alternate}
+.bg i:nth-child(2){--c:#00c8ff;bottom:-50vmax;right:-30vmax;opacity:.35;animation:drift2 28s ease-in-out infinite alternate}
+.bg i:nth-child(3){--c:#5b3dff;top:20vmax;left:30vmax;opacity:.3;animation:drift3 34s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate3d(30vmax,18vmax,0) scale(1.15)}}
+@keyframes drift2{to{transform:translate3d(-30vmax,-20vmax,0) scale(1.2)}}
+@keyframes drift3{to{transform:translate3d(-25vmax,15vmax,0) scale(.9)}}
+#fx{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.floor{position:fixed;left:-50%;right:-50%;bottom:-10vh;height:60vh;z-index:-2;pointer-events:none;
+  transform:perspective(500px) rotateX(68deg);transform-origin:bottom;opacity:.4;
+  background-image:linear-gradient(var(--b3) 1px,transparent 1px),linear-gradient(90deg,var(--b3) 1px,transparent 1px);
+  background-size:70px 70px;animation:floor 4s linear infinite;
+  -webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%)}
+@keyframes floor{to{background-position:0 70px}}
+.cursor{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:-1;left:0;top:0;
+  background:radial-gradient(circle,rgba(0,200,255,.14),transparent 65%);will-change:transform}
+
+/* ---------- COMMON ---------- */
+.grad{background:linear-gradient(100deg,#fff,var(--b4) 35%,var(--b3) 60%,var(--b2));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:110px 6% 70px;position:relative}
+.title{text-align:center;margin-bottom:56px}
+.title small{letter-spacing:7px;color:var(--b3);font-size:.75rem;text-transform:uppercase}
+.title h2{font-size:clamp(2.1rem,6vw,4rem);margin-top:10px;line-height:1.05}
+.title p{color:var(--muted);max-width:600px;margin:14px auto 0}
+.reveal{opacity:0;transform:translate3d(0,40px,0);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:none}
+.btn{display:inline-block;padding:14px 34px;border-radius:60px;border:1px solid transparent;font:600 1rem 'Poppins';cursor:pointer;text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,var(--b2),var(--b3));box-shadow:0 10px 40px rgba(31,107,255,.45);transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 18px 50px rgba(0,200,255,.5)}
+.btn.ghost{background:var(--glass);border-color:var(--line);box-shadow:none;backdrop-filter:blur(8px)}
+
+/* NAV */
+nav{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:60;display:flex;gap:6px;padding:7px;border-radius:60px;
+  background:rgba(8,22,60,.7);backdrop-filter:blur(14px);border:1px solid var(--line);max-width:94vw;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{padding:9px 18px;border-radius:40px;text-decoration:none;font-size:.82rem;color:var(--muted);white-space:nowrap;transition:.3s}
+nav a:hover,nav a.on{background:linear-gradient(135deg,var(--b2),var(--b3));color:#fff}
+
+/* ---------- HERO ---------- */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:80px;overflow:hidden}
+.badge{border:1px solid var(--line);background:var(--glass);padding:8px 20px;border-radius:50px;font-size:.8rem;color:var(--b4);backdrop-filter:blur(10px);letter-spacing:2px}
+#hero h1{font-size:clamp(3.4rem,13vw,10rem);line-height:.9;margin:22px 0 6px;letter-spacing:-2px;text-shadow:0 0 60px rgba(31,107,255,.6)}
+#hero .sub{font-size:clamp(1rem,2.6vw,1.5rem);color:var(--b4);font-weight:300;letter-spacing:6px;text-transform:uppercase}
+#typed{min-height:1.7em;color:var(--muted);margin-top:14px}
+.cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;position:relative;z-index:3}
+
+/* 3D RING */
+.stage{width:100%;height:clamp(240px,42vw,400px);perspective:1100px;margin-top:10px;cursor:grab;touch-action:pan-y}
+.stage:active{cursor:grabbing}
+.ring{position:relative;width:var(--w);height:var(--h);margin:0 auto;top:50%;transform-style:preserve-3d;will-change:transform;margin-top:calc(var(--h)/-2)}
+.ring .p{position:absolute;inset:0;border-radius:16px;overflow:hidden;border:2px solid rgba(143,227,255,.55);
+  box-shadow:0 0 30px rgba(0,200,255,.35);background:#0a2a73;backface-visibility:visible}
+.ring .p img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-drag:none}
+.ring .p::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.28),transparent 45%)}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(10,40,110,.25);padding:16px 0;transform:rotate(-1.5deg);margin:30px -3%}
+.marquee div{display:flex;gap:50px;white-space:nowrap;width:max-content;animation:mq 28s linear infinite;font:800 1.6rem 'Syne';color:transparent;-webkit-text-stroke:1px var(--b3)}
+.marquee span:nth-child(even){color:var(--b4);-webkit-text-stroke:0}
+@keyframes mq{to{transform:translate3d(-50%,0,0)}}
+
+/* LETTER */
+.letter{max-width:820px;margin:0 auto;background:var(--glass);border:1px solid var(--line);border-radius:28px;padding:50px;backdrop-filter:blur(10px);line-height:1.9;color:#d8e8ff;position:relative}
+.letter::before{content:"“";position:absolute;top:-30px;left:26px;font:900 9rem 'Syne';color:var(--b3);opacity:.35}
+.sign{font-family:'Caveat',cursive;font-size:2.1rem;color:var(--b4);margin-top:18px;text-align:right}
+
+/* PORTALS */
+.portals{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:30px;max-width:1150px;margin:0 auto;perspective:1200px}
+.portal{display:block;text-decoration:none;height:300px;border-radius:28px;padding:34px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,rgba(31,107,255,.35),rgba(0,200,255,.08));border:1px solid var(--line);transform-style:preserve-3d;will-change:transform;
+  display:flex;flex-direction:column;justify-content:flex-end}
+.portal .ico{position:absolute;top:26px;right:30px;font-size:5.5rem;transform:translateZ(70px);filter:drop-shadow(0 10px 20px rgba(0,0,0,.4))}
+.portal h3{font-size:2rem;transform:translateZ(50px)}
+.portal p{color:var(--muted);margin-top:6px;transform:translateZ(30px);font-size:.92rem}
+.portal .go{margin-top:14px;color:var(--b3);font-weight:600;transform:translateZ(40px)}
+.shine{position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.3),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none}
+[data-tilt]:hover .shine{opacity:1}
+[data-tilt]{transition:transform .12s ease-out}
+
+/* TIMELINE */
+.timeline{max-width:950px;margin:0 auto;position:relative}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(var(--b2),var(--b3));transform:translateX(-50%);border-radius:5px;box-shadow:0 0 20px var(--b3)}
+.tl{width:50%;padding:0 46px 46px;position:relative}
+.tl:nth-child(even){margin-left:50%}
+.tl::after{content:"";position:absolute;top:14px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--b3);box-shadow:0 0 22px var(--b3)}
+.tl:nth-child(even)::after{left:-9px;right:auto}
+.tl .box{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:22px 26px;backdrop-filter:blur(8px);transition:transform .4s,border-color .4s}
+.tl .box:hover{transform:translateY(-6px) scale(1.03);border-color:var(--b3)}
+.tl .tag{color:var(--b3);font-size:.72rem;letter-spacing:4px}
+.tl h3{margin:6px 0;font-size:1.3rem}
+.tl p{color:var(--muted);font-size:.92rem;line-height:1.7}
+@media(max-width:700px){.timeline::before{left:12px}.tl,.tl:nth-child(even){width:100%;margin-left:0;padding:0 0 36px 40px}.tl::after,.tl:nth-child(even)::after{left:4px;right:auto}}
+
+/* WISHES */
+.wishform{max-width:660px;margin:0 auto 46px;display:grid;gap:14px}
+.wishform input,.wishform textarea{padding:15px 22px;border-radius:18px;border:1px solid var(--line);background:var(--glass);color:var(--text);font:inherit;outline:none}
+.wishform input:focus,.wishform textarea:focus{border-color:var(--b3)}
+.wishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;max-width:1150px;margin:0 auto}
+.note{padding:24px;border-radius:6px 22px 22px 22px;color:#06204f;font-family:'Caveat',cursive;font-size:1.4rem;line-height:1.35;box-shadow:0 14px 30px rgba(0,0,0,.45);transition:transform .3s}
+.note:nth-child(3n+1){background:#8fe3ff;transform:rotate(-2deg)}
+.note:nth-child(3n+2){background:#b7cbff;transform:rotate(1.5deg)}
+.note:nth-child(3n){background:#7ab4ff;transform:rotate(-1deg)}
+.note:hover{transform:scale(1.07) rotate(0)}
+.note b{display:block;margin-top:10px;font-size:1.05rem;opacity:.7}
+
+/* FINALE */
+#finale{text-align:center;padding:130px 6%}
+#finale h2{font-size:clamp(2.4rem,7vw,5.5rem);line-height:1.05}
+#finale p{color:var(--muted);max-width:640px;margin:22px auto 36px;line-height:1.8}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+/* ---------- PAGE HEADER (inner pages) ---------- */
+.page-head{padding:140px 6% 20px;text-align:center}
+.page-head h1{font-size:clamp(2.6rem,9vw,6rem);line-height:1}
+.page-head p{color:var(--muted);margin-top:12px}
+
+/* CLASSMATES PAGE */
+.filter{display:flex;justify-content:center;margin:26px 0 10px}
+.filter input{width:min(420px,90%);padding:14px 24px;border-radius:50px;border:1px solid var(--line);background:var(--glass);color:var(--text);font-size:1rem;outline:none}
+.filter input:focus{border-color:var(--b3)}
+.grid3d{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:34px;max-width:1250px;margin:0 auto;perspective:1200px}
+.card{height:340px;border-radius:26px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--line);background:var(--glass);transform-style:preserve-3d;will-change:transform;
+  box-shadow:0 24px 50px rgba(0,0,0,.5)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .cap{position:absolute;left:0;right:0;bottom:0;padding:50px 18px 18px;background:linear-gradient(transparent,rgba(2,8,22,.95));transform:translateZ(40px)}
+.card .cap h3{font-size:1.2rem}
+.card .cap small{color:var(--b3)}
+.card:hover{border-color:var(--b3);box-shadow:0 30px 70px rgba(0,200,255,.3)}
+
+/* MODAL / LIGHTBOX */
+.modal{position:fixed;inset:0;background:rgba(2,8,22,.92);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.modal.on{display:flex}
+.mbox{max-width:900px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.mbox img{width:100%;max-height:78vh;object-fit:cover;border-radius:24px;box-shadow:0 0 80px rgba(31,107,255,.6)}
+.mbox h2{font-size:2.4rem}
+.mbox .nick{color:var(--b3);letter-spacing:3px;margin:6px 0 16px}
+.mbox p{color:#cfe2ff;line-height:1.8}
+.mbox .dream{margin-top:16px;color:var(--b4)}
+.modal .x{position:absolute;top:18px;right:28px;font-size:2.6rem;cursor:pointer;line-height:1}
+@media(max-width:700px){.mbox{grid-template-columns:1fr}.mbox img{max-height:50vh}}
+.lb img{max-width:92%;max-height:80vh;border-radius:18px;box-shadow:0 0 80px rgba(31,107,255,.6)}
+.lb{flex-direction:column}
+.lb p{margin-top:14px;color:var(--b4);font-size:1.2rem}
+
+/* GALLERY PAGE */
+.tabs{display:flex;gap:10px;justify-content:center;margin:26px 0 10px}
+.tabs button{padding:11px 28px;border-radius:50px;border:1px solid var(--line);background:var(--glass);color:var(--text);font:600 .95rem 'Poppins';cursor:pointer;transition:.3s}
+.tabs button.on{background:linear-gradient(135deg,var(--b2),var(--b3));border-color:transparent}
+.gallery{columns:4 240px;column-gap:20px;max-width:1300px;margin:0 auto}
+.gallery figure{break-inside:avoid;margin-bottom:20px;border-radius:20px;overflow:hidden;position:relative;cursor:zoom-in;border:1px solid var(--line);transition:transform .5s,box-shadow .5s}
+.gallery figure:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 25px 50px rgba(0,200,255,.3)}
+.gallery img{width:100%;display:block}
+.gallery figcaption{position:absolute;bottom:0;left:0;right:0;padding:30px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-size:.85rem;opacity:0;transition:.4s}
+.gallery figure:hover figcaption{opacity:1}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto}
+.vid{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:14px;transition:.4s}
+.vid:hover{transform:translateY(-8px);border-color:var(--b3)}
+.vid video,.vid iframe{width:100%;aspect-ratio:16/9;border-radius:16px;background:#000;border:0;display:block}
+.vid h3{padding:14px 8px 4px;font-size:1.1rem}
+.vid p{padding:0 8px 8px;color:var(--muted);font-size:.85rem}
+.hide{display:none!important}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="on">Home</a>
+  <a href="#friends">Classmates</a>
+  <a href="#gallery">Photos</a>
+  <a href="#gallery" onclick="showTab('videos')">Videos</a>
+  <a href="#wishes">Wishes</a>
+</nav>
+
+<section id="hero">
+  <div class="badge">CLASS 12 · FAREWELL EDITION</div>
+  <h1 class="grad">FOREVER<br>FRIENDS</h1>
+  <div class="sub">School ends. We don't.</div>
+  <div class="stage" id="stage"><div class="ring" id="ring"></div></div>
+  <div id="typed"></div>
+  <div class="cta">
+    <a class="btn" href="#friends">Meet the Gang 👥</a>
+    <a class="btn ghost" href="#gallery">Our Memories 📸</a>
+  </div>
+</section>
+
+<div class="marquee"><div>
+  <span>FRIENDS FOREVER</span><span>★</span><span>14 LEGENDS</span><span>★</span><span>ONE FAMILY</span><span>★</span><span>NEVER SAY GOODBYE</span><span>★</span>
+  <span>FRIENDS FOREVER</span><span>★</span><span>14 LEGENDS</span><span>★</span><span>ONE FAMILY</span><span>★</span><span>NEVER SAY GOODBYE</span><span>★</span>
+</div></div>
+
+<section id="letter">
+  <div class="title reveal"><small>From the heart</small><h2 class="grad">A Letter To My Friends</h2></div>
+  <div class="letter reveal">
+    <p>Dear friends,<br><br>
+    We walked in as classmates and we are walking out as a family. Thank you for the shared tiffins, last-bench jokes,
+    bunked periods, exam-night panic and endless laughter. Thank you for every time you lifted me up.<br><br>
+    School is over, but this friendship is not. Different colleges, different cities, different dreams,
+    same hearts. Call often, meet whenever you can, and never forget the people who knew you before you became who you will be.
+    <br><br><i>We were here, together, and it was beautiful.</i></p>
+    <div class="sign">— Your Classmate 💙</div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="title reveal"><small>Enter</small><h2 class="grad">Choose Your Memory</h2></div>
+  <div class="portals">
+    <a class="portal reveal" data-tilt href="#friends"><div class="shine"></div><div class="ico">👥</div><h3>The Gang</h3><p>All 14 of us, in 3D.</p><div class="go">Open →</div></a>
+    <a class="portal reveal" data-tilt href="#gallery"><div class="shine"></div><div class="ico">📸</div><h3>Photos</h3><p>Every moment we froze in time.</p><div class="go">Open →</div></a>
+    <a class="portal reveal" data-tilt href="#gallery" onclick="showTab('videos')"><div class="shine"></div><div class="ico">🎬</div><h3>Videos</h3><p>Relive it all in motion.</p><div class="go">Open →</div></a>
+  </div>
+</section>
+
+
+<section id="friends">
+  <div class="title reveal"><small>The Legends</small><h2 class="grad">THE GANG</h2><p>Hover to tilt in 3D. Tap a card to read their message.</p></div>
+  <div class="filter"><input id="search" placeholder="🔍 Search a classmate..."></div>
+  <div class="grid3d" id="grid"></div>
+</section>
+
+<section id="gallery">
+  <div class="title reveal"><small>Snapshots</small><h2 class="grad">MEMORIES</h2><p>Every moment we froze in time.</p></div>
+  <div class="tabs"><button data-t="photos" class="on">📸 Photos</button><button data-t="videos">🎬 Videos</button></div>
+  <div style="height:30px"></div>
+  <div class="gallery" id="gal"></div>
+  <div class="videos hide" id="vids"></div>
+</section>
+
+<section id="memories">
+  <div class="title reveal"><small>Down Memory Lane</small><h2 class="grad">Moments We'll Never Forget</h2></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="wishes">
+  <div class="title reveal"><small>Leave your mark</small><h2 class="grad">Wishes Wall</h2><p>Write a message for the gang. Notes save in your own browser.</p></div>
+  <form class="wishform reveal" onsubmit="addWish(event)">
+    <input id="wn" placeholder="Your name" required maxlength="30">
+    <textarea id="wm" rows="3" placeholder="Write your wish or favourite memory..." required maxlength="200"></textarea>
+    <button class="btn" type="submit">Stick it on the wall 📌</button>
+  </form>
+  <div class="wishes" id="wl"></div>
+</section>
+
+<section id="finale">
+  <h2 class="grad reveal">This isn't the end.<br>It's the next chapter.</h2>
+  <p class="reveal">New college, new faces, new city. But you'll always be the first family we made outside home. Shine bright, stay kind, and meet again, all 14 of us, laughing like old times.</p>
+  <a class="btn reveal" href="#friends">See Everyone Once More 💙</a>
+</section>
+<footer>Made with 💙 by the Class 12 gang · Forever Friends</footer>
+
+
+<div class="modal" id="modal">
+  <span class="x">×</span>
+  <div class="mbox">
+    <img id="mimg" alt="">
+    <div><h2 class="grad" id="mname"></h2><div class="nick" id="mnick"></div><p id="mmsg"></p><div class="dream" id="mdream"></div></div>
+  </div>
+</div>
+<div class="modal lb" id="lb"><span class="x">×</span><img id="lbimg" alt=""><p id="lbcap"></p></div>
+
+<script>
+/* =====================================================
+   ✏️ EDIT YOUR CLASS DATA HERE (all 14 students)
+   photo → put the image file in the "photos" folder
+===================================================== */
+const CLASSMATES = [
+  {name:"Classmate 1",  nick:"The Topper",   msg:"Never forget our last bench gang!",      dream:"Engineer 🚀",     photo:"photos/c1.jpg"},
+  {name:"Classmate 2",  nick:"Queen Bee",    msg:"Thanks for every note and every laugh!", dream:"Doctor 🩺",       photo:"photos/c2.jpg"},
+  {name:"Classmate 3",  nick:"Joker",        msg:"Stay crazy, stay in touch!",             dream:"Entrepreneur 💼", photo:"photos/c3.jpg"},
+  {name:"Classmate 4",  nick:"Artist",       msg:"You all are my best artwork.",           dream:"Designer 🎨",     photo:"photos/c4.jpg"},
+  {name:"Classmate 5",  nick:"Sportsman",    msg:"Match khatam, dosti nahi!",              dream:"Athlete 🏏",      photo:"photos/c5.jpg"},
+  {name:"Classmate 6",  nick:"Sweetheart",   msg:"You all are my family.",                 dream:"Lawyer ⚖️",       photo:"photos/c6.jpg"},
+  {name:"Classmate 7",  nick:"Techie",       msg:"Will build something big, with you!",    dream:"Developer 💻",    photo:"photos/c7.jpg"},
+  {name:"Classmate 8",  nick:"Singer",       msg:"Every song reminds me of you all.",      dream:"Singer 🎤",       photo:"photos/c8.jpg"},
+  {name:"Classmate 9",  nick:"Dancer",       msg:"Our memories are my favourite beat.",    dream:"Choreographer 💃",photo:"photos/c9.jpg"},
+  {name:"Classmate 10", nick:"Foodie",       msg:"Tiffin sharing forever!",                dream:"Chef 🍳",         photo:"photos/c10.jpg"},
+  {name:"Classmate 11", nick:"Silent Killer",msg:"Quiet, but I loved every moment.",       dream:"Scientist 🔬",    photo:"photos/c11.jpg"},
+  {name:"Classmate 12", nick:"Photographer", msg:"I kept every memory in a frame.",        dream:"Filmmaker 🎬",    photo:"photos/c12.jpg"},
+  {name:"Classmate 13", nick:"Motivator",    msg:"Believe in yourselves, always.",         dream:"Officer 🎖️",      photo:"photos/c13.jpg"},
+  {name:"Classmate 14", nick:"Last Bencher", msg:"Bunking was fun, you were more fun.",    dream:"Startup Founder 🚀", photo:"photos/c14.jpg"}
+];
+
+const MEMORIES = [
+  {tag:"DAY 1",     t:"Strangers in a Classroom",  d:"Nervous smiles, new seats, and the first hello that started everything."},
+  {tag:"BENCH WARS",t:"Front vs Back Benchers",    d:"Nobody won, everybody laughed. Legendary every single day."},
+  {tag:"TRIP",      t:"The Unforgettable Picnic",  d:"Songs, selfies, snacks and a bus ride that never felt long enough."},
+  {tag:"EVENTS",    t:"Annual Day Madness",        d:"Last-minute costumes, dance rehearsals and stage lights we'll never forget."},
+  {tag:"BOARDS",    t:"Exam Season Survivors",     d:"Late-night calls, shared notes and the courage we gave each other."},
+  {tag:"LAST DAY",  t:"Farewell & Tears",          d:"Signatures on shirts, group hugs and the promise to never lose touch."}
+];
+
+const PHOTOS = [
+  {src:"photos/g1.jpg", cap:"Class picnic 🌳"},
+  {src:"photos/g2.jpg", cap:"Annual day 🎭"},
+  {src:"photos/g3.jpg", cap:"Last bench gang 😎"},
+  {src:"photos/g4.jpg", cap:"Teachers' Day 🎁"},
+  {src:"photos/g5.jpg", cap:"Sports day 🏆"},
+  {src:"photos/g6.jpg", cap:"Farewell day 💙"},
+  {src:"photos/g7.jpg", cap:"Lunch break fun 🍱"},
+  {src:"photos/g8.jpg", cap:"Group selfie 🤳"},
+  {src:"photos/g9.jpg", cap:"Classroom vibes 📚"},
+  {src:"photos/g10.jpg",cap:"Best moments ✨"}
+];
+
+/* type "file" → video inside the "videos" folder (keep each under 100 MB for GitHub)
+   type "youtube" → put only the YouTube video ID in src */
+const VIDEOS = [
+  {type:"file", src:"videos/memories.mp4", title:"Our Memories Reel 🎬",       desc:"All the best moments in one video."},
+  {type:"file", src:"videos/farewell.mp4", title:"Farewell Day Highlights 🎉", desc:"The last day we'll never forget."}
+  // {type:"youtube", src:"YOUTUBE_VIDEO_ID", title:"Our Class Song 🎵", desc:"Our anthem"}
+];
+
+const TYPED_LINES = [
+  "We came as classmates. We leave as family.",
+  "From bunking classes to chasing dreams.",
+  "College awaits, but you'll always feel like home.",
+  "14 friends. One unbreakable bond."
+];
+
+</script>
+<script>
+/* Shared logic for all pages. Nothing to edit here, edit data.js instead. */
+const $ = s => document.querySelector(s);
+const PAL = ["#1f6bff","#00c8ff","#5b3dff","#0b3a9e"];
+
+/* Blue fallback picture if a photo file is missing */
+function ph(text,i=0){
+  const ini=text.replace(/[^\w ]/g,"").split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='500' height='600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${PAL[i%4]}'/><stop offset='1' stop-color='${PAL[(i+1)%4]}'/></linearGradient></defs><rect width='100%' height='100%' fill='url(#g)'/><text x='50%' y='54%' font-size='150' font-family='Georgia' fill='white' text-anchor='middle' opacity='.9'>${ini}</text></svg>`;
+  return "data:image/svg+xml;utf8,"+encodeURIComponent(svg);
+}
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- Background: aurora + stars + glow ---------- */
+(function bg(){
+  document.body.insertAdjacentHTML("afterbegin",'<div class="bg"><i></i><i></i><i></i></div><div class="floor"></div><canvas id="fx"></canvas><div class="cursor" id="cur"></div>');
+  const cv=$("#fx"),cx=cv.getContext("2d");let W,H;
+  const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};rs();addEventListener("resize",rs);
+  const N=innerWidth<700?35:60;
+  const st=Array.from({length:N},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.4,s:Math.random()*.35+.08,a:Math.random()*.6+.2}));
+  let run=true;document.addEventListener("visibilitychange",()=>{run=!document.hidden;if(run)loop()});
+  function loop(){
+    if(!run)return;cx.clearRect(0,0,W,H);cx.fillStyle="#9fe6ff";
+    for(const p of st){p.y-=p.s;if(p.y<-5){p.y=H+5;p.x=Math.random()*W}cx.globalAlpha=p.a;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.3);cx.fill()}
+    requestAnimationFrame(loop)}
+  loop();
+  const cur=$("#cur");let mx=0,my=0,mt=false;
+  addEventListener("pointermove",e=>{mx=e.clientX-170;my=e.clientY-170;if(!mt){mt=true;requestAnimationFrame(()=>{cur.style.transform=`translate3d(${mx}px,${my}px,0)`;mt=false})}},{passive:true});
+})();
+
+/* ---------- Scroll reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("show");io.unobserve(x.target)}}),{threshold:.1});
+const watch=()=>document.querySelectorAll(".reveal:not(.show)").forEach(e=>io.observe(e));
+
+/* ---------- 3D tilt (transform only, throttled with rAF) ---------- */
+function tilt(el,max=16){
+  let raf=0;
+  el.addEventListener("pointermove",e=>{
+    if(e.pointerType==="touch"||raf)return;
+    raf=requestAnimationFrame(()=>{raf=0;
+      const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      el.style.transform=`rotateY(${(x-.5)*max*2}deg) rotateX(${(.5-y)*max*2}deg) scale3d(1.04,1.04,1.04)`;
+      el.style.setProperty("--gx",x*100+"%");el.style.setProperty("--gy",y*100+"%")})});
+  el.addEventListener("pointerleave",()=>{el.style.transform=""});
+}
+document.querySelectorAll("[data-tilt]").forEach(el=>tilt(el));
+
+/* ---------- Home page ---------- */
+if($("#typed")){
+  let li=0,ci=0,del=false;const ty=$("#typed");
+  (function type(){const s=TYPED_LINES[li];ty.textContent=s.slice(0,ci)+"▌";
+    if(!del&&ci<s.length){ci++;setTimeout(type,55)}
+    else if(!del){del=true;setTimeout(type,1700)}
+    else if(ci>0){ci--;setTimeout(type,25)}
+    else{del=false;li=(li+1)%TYPED_LINES.length;setTimeout(type,300)}})();
+}
+
+/* 3D ring of photos (drag to spin, auto-rotates) */
+if($("#ring")){
+  const ring=$("#ring"),stage=$("#stage"),n=CLASSMATES.length;
+  const small=innerWidth<700,w=small?95:150,h=small?130:200;
+  const R=Math.round((w/2)/Math.tan(Math.PI/n))+(small?14:26);
+  ring.style.setProperty("--w",w+"px");ring.style.setProperty("--h",h+"px");
+  CLASSMATES.forEach((c,i)=>{
+    const d=document.createElement("div");d.className="p";
+    d.style.transform=`rotateY(${i*360/n}deg) translateZ(${R}px)`;
+    d.innerHTML=`<img src="${esc(c.photo)}" alt="" loading="eager" onerror="this.onerror=null;this.src=ph('${i+1}',${i})">`;
+    ring.appendChild(d)});
+  let rot=0,vel=.12,drag=false,lx=0,vis=true;
+  stage.addEventListener("pointerdown",e=>{drag=true;lx=e.clientX;stage.setPointerCapture(e.pointerId)});
+  stage.addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;rot+=dx*.4;vel=dx*.4});
+  const up=()=>drag=false;stage.addEventListener("pointerup",up);stage.addEventListener("pointercancel",up);
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(stage);
+  (function spin(){
+    if(vis){if(!drag){rot+=vel;vel+=(.12-vel)*.02}
+      ring.style.transform=`translateZ(-${R}px) rotateX(-8deg) rotateY(${rot}deg)`}
+    requestAnimationFrame(spin)})();
+}
+
+/* Timeline */
+if($("#timeline")){
+  MEMORIES.forEach(m=>{const d=document.createElement("div");d.className="tl reveal";
+    d.innerHTML=`<div class="box"><div class="tag">${esc(m.tag)}</div><h3>${esc(m.t)}</h3><p>${esc(m.d)}</p></div>`;$("#timeline").appendChild(d)});
+}
+
+/* Wishes wall */
+if($("#wl")){
+  const def=[{n:"The Gang",m:"We made it! Proud of every one of us 🎓"},{n:"A friend",m:"Thanks for being my favourite part of school 💙"},{n:"Last bencher",m:"Bunking was great, but you were greater 😄"}];
+  const load=()=>{try{return JSON.parse(localStorage.getItem("wishes"))||def}catch(e){return def}};
+  const draw=()=>{const wl=$("#wl");wl.innerHTML="";load().forEach(w=>{const n=document.createElement("div");n.className="note";n.textContent=w.m;const b=document.createElement("b");b.textContent="— "+w.n;n.appendChild(b);wl.appendChild(n)})};
+  window.addWish=e=>{e.preventDefault();const a=load();a.unshift({n:$("#wn").value,m:$("#wm").value});try{localStorage.setItem("wishes",JSON.stringify(a))}catch(_){}draw();e.target.reset()};
+  draw();
+}
+
+/* ---------- Classmates page ---------- */
+if($("#grid")){
+  const grid=$("#grid"),modal=$("#modal");
+  const render=list=>{grid.innerHTML="";
+    list.forEach(({c,i})=>{
+      const el=document.createElement("div");el.className="card reveal";el.setAttribute("data-tilt","");
+      el.innerHTML=`<img src="${esc(c.photo)}" alt="${esc(c.name)}" loading="lazy" onerror="this.onerror=null;this.src=ph('${esc(c.name)}',${i})"><div class="shine"></div><div class="cap"><h3>${esc(c.name)}</h3><small>${esc(c.nick)}</small></div>`;
+      el.onclick=()=>{$("#mimg").src=el.querySelector("img").src;$("#mname").textContent=c.name;$("#mnick").textContent=c.nick;$("#mmsg").textContent="“"+c.msg+"”";$("#mdream").textContent="Dream: "+c.dream;modal.classList.add("on")};
+      tilt(el,14);grid.appendChild(el)});watch()};
+  const all=CLASSMATES.map((c,i)=>({c,i}));render(all);
+  $("#search").addEventListener("input",e=>{const q=e.target.value.toLowerCase();render(all.filter(x=>(x.c.name+x.c.nick).toLowerCase().includes(q)))});
+  modal.addEventListener("click",e=>{if(e.target===modal||e.target.classList.contains("x"))modal.classList.remove("on")});
+}
+
+/* ---------- Gallery page ---------- */
+if($("#gal")){
+  PHOTOS.forEach((g,i)=>{const f=document.createElement("figure");f.className="reveal";
+    f.innerHTML=`<img src="${esc(g.src)}" alt="${esc(g.cap)}" loading="lazy" style="aspect-ratio:${[4/5,1,3/4,5/4][i%4]};object-fit:cover" onerror="this.onerror=null;this.src=ph('${i+1}',${i})"><figcaption>${esc(g.cap)}</figcaption>`;
+    f.onclick=()=>{$("#lbimg").src=f.querySelector("img").src;$("#lbcap").textContent=g.cap;$("#lb").classList.add("on")};$("#gal").appendChild(f)});
+  VIDEOS.forEach(v=>{const d=document.createElement("div");d.className="vid reveal";
+    const media=v.type==="youtube"?`<iframe src="https://www.youtube.com/embed/${esc(v.src)}" allowfullscreen loading="lazy"></iframe>`:`<video controls preload="metadata" src="${esc(v.src)}"></video>`;
+    d.innerHTML=`${media}<h3>${esc(v.title)}</h3><p>${esc(v.desc)}</p>`;$("#vids").appendChild(d)});
+  $("#lb").addEventListener("click",()=>$("#lb").classList.remove("on"));
+  const tabs=document.querySelectorAll(".tabs button");
+  const show=t=>{tabs.forEach(b=>b.classList.toggle("on",b.dataset.t===t));$("#gal").classList.toggle("hide",t!=="photos");$("#vids").classList.toggle("hide",t!=="videos");watch()};
+  tabs.forEach(b=>b.onclick=()=>show(b.dataset.t));window.showTab=show;
+  show(location.hash==="#videos"?"videos":"photos");
+}
+watch();
+
+</script>
+</body>
+</html>
