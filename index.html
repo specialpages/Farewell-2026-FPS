@@ -56,6 +56,9 @@ body{background:radial-gradient(ellipse at 10% 8%,#ffe2f0 0,transparent 32%),rad
 @media(max-width:650px){.friends-portal{min-height:260px}.portal-stack{width:120px;height:160px}.portal-stack i{inset:18px 12px}.portal-orbit{right:28%;top:8%}.video-grid{grid-template-columns:1fr}}
 
 .funny-moments{margin:0;padding:105px 7vw;background:linear-gradient(135deg,#fff0df 0%,#f4e5fb 52%,#def5f3 100%);position:relative;overflow:hidden}.funny-moments:before{content:"✿";position:absolute;right:5%;top:35px;font-size:80px;color:#d6a6c7;opacity:.22;pointer-events:none}.funny-photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.funny-shot{min-width:0;margin:0;background:#fff;padding:10px 10px 35px;box-shadow:0 10px 24px #655b7020;transform:rotate(var(--tilt,-2deg));transition:transform .25s}.funny-shot:nth-child(even){--tilt:2deg}.funny-shot:hover{transform:rotate(0) translateY(-5px)}.funny-shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#eee5ef}.funny-shot figcaption{text-align:center;font:15px var(--hand);padding-top:9px;color:#746a80}.funny-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px;align-items:stretch}.funny-video{min-width:0;background:#fff;border-radius:22px;padding:11px;box-shadow:0 12px 28px #655b7020;display:flex;flex-direction:column}.funny-video video{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:14px;background:transparent;max-height:480px}.funny-video-grid{align-items:start}.funny-video b{display:block;font:23px var(--serif);padding:12px 8px 3px}.funny-video small{display:block;font:14px var(--hand);color:#82788f;padding:0 8px 8px}@media(max-width:900px){.funny-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.funny-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.funny-moments{padding:75px 6vw}.funny-photo-grid,.funny-video-grid{grid-template-columns:1fr;gap:16px}.funny-shot{max-width:440px;width:100%;margin:0 auto}.funny-video{width:100%}}
+
+/* Background music control */
+.music-toggle{position:fixed;right:18px;bottom:18px;z-index:70;border:1px solid #ffffffaa;border-radius:999px;padding:12px 17px;background:#343044;color:#fff;font:600 12px var(--sans);box-shadow:0 8px 24px #34304433;cursor:pointer}.music-toggle:focus-visible{outline:3px solid #bd777f;outline-offset:3px}
 </style></head>
 <body>
 <div class="loader" id="loader"><div><b>Dear Class of<br>2026 ♡</b><small>FAIZAN PUBLIC HR. SEC. SCHOOL</small></div></div>
@@ -79,6 +82,9 @@ body{background:radial-gradient(ellipse at 10% 8%,#ffe2f0 0,transparent 32%),rad
 </section>
 <section class="video-memories" id="videos"><div class="section-top reveal"><div><div class="eyebrow">05 · Press play, remember everything</div><h2>Our memories<br>in motion.</h2></div><p>Drop your farewell film, class clips and favourite little videos here. The frames are ready for your own footage.</p></div><div class="video-grid"><article class="video-card reveal"><video controls playsinline preload="metadata" poster="photos/video-poster-01.jpg"><source src="videos/funny/farewell-film.mp4" type="video/mp4"></video><div><b>The farewell film</b><span>the moments we'll replay forever</span></div></article><article class="video-card reveal"><video controls playsinline preload="metadata" poster="photos/video-poster-02.jpg"><source src="videos/funny/classroom-moments.mp4" type="video/mp4"></video><div><b>Little bits of us</b><span>all the chaos between the bells</span></div></article></div></section><section class="guestbook" id="guestbook"><div class="section-top reveal"><div><div class="eyebrow">05 · Leave a little love</div><h2>Write it down<br>before we go.</h2></div><p>A message for your friends, your teachers, or the version of you who first walked through these gates.</p></div><div class="guest-grid"><form class="guest-form" id="wishForm"><input id="who" maxlength="35" placeholder="Your name" required><textarea id="message" maxlength="220" placeholder="A memory, a wish, a little thank you…" required></textarea><button>Leave your note ♡</button></form><div class="notes" id="notes"></div></div></section>
 <section class="final"><span class="flower fl1">✿</span><span class="flower fl2">✿</span><div class="eyebrow">Until our paths cross again</div><h2>Not the end.<br><em>Just a new beginning.</em></h2><p>Wherever life takes us, may we always carry a little piece of these days. Here's to the people, the laughter, and the memories that will always feel like home.</p><button id="celebrate">Send a little sparkle ✨</button></section>
+
+<audio id="bgMusic" src="music/AUD-20261125-WA0209.mp3" preload="auto" loop></audio>
+<button class="music-toggle" id="musicToggle" type="button" aria-label="Turn background music on">♫ Play music</button>
 <footer><span>FAIZAN PUBLIC HR. SEC. SCHOOL · CLASS OF 2026</span><span>made with lots of love ♡</span></footer>
 <div class="lightbox" id="lightbox"><button id="closeLightbox" aria-label="Close">×</button><img id="lightboxImg" alt="School memory"></div>
 <script>
@@ -98,4 +104,24 @@ document.getElementById('closeLightbox').onclick=()=>lb.classList.remove('open')
 const form=document.getElementById('wishForm'),notes=document.getElementById('notes');function drawNotes(){let saved=[];try{saved=JSON.parse(localStorage.getItem('fps-farewell-notes')||'[]')}catch(e){}if(!saved.length)saved=[{name:'A friend',message:'The best part of school was the people. Keep shining. ♡'}];notes.replaceChildren();saved.slice(0,12).forEach(n=>{const d=document.createElement('article');d.className='note';const p=document.createElement('p');p.textContent='“'+n.message+'”';const s=document.createElement('small');s.textContent='— '+n.name+' ♡';d.append(p,s);notes.append(d)})}drawNotes();form.onsubmit=e=>{e.preventDefault();let saved=[];try{saved=JSON.parse(localStorage.getItem('fps-farewell-notes')||'[]')}catch(x){}saved.unshift({name:document.getElementById('who').value.trim(),message:document.getElementById('message').value.trim()});try{localStorage.setItem('fps-farewell-notes',JSON.stringify(saved.slice(0,30)))}catch(x){}form.reset();drawNotes()};
 document.getElementById('celebrate').onclick=()=>{for(let i=0;i<70;i++){const s=document.createElement('span');s.textContent=['✿','♡','✧','✦'][i%4];s.style.cssText='position:fixed;z-index:100;left:'+Math.random()*100+'vw;top:-30px;font-size:'+(16+Math.random()*24)+'px;color:'+['#d88b9a','#8c80bd','#e2bd5e','#82a9b7'][i%4]+';transition:top 2.5s linear,transform 2.5s linear;pointer-events:none';document.body.append(s);requestAnimationFrame(()=>{s.style.top='110vh';s.style.transform='rotate(500deg)'});setTimeout(()=>s.remove(),2700)}};
 document.querySelectorAll('.reveal').forEach(e=>io.observe(e));addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),550));setTimeout(()=>document.getElementById('loader').classList.add('hide'),2300);
+
+// Background music: browsers require a visitor gesture before audible playback.
+(()=>{
+ const music=document.getElementById('bgMusic');
+ const toggle=document.getElementById('musicToggle');
+ if(!music||!toggle)return;
+ let wanted=true,started=false;
+ const videoIsPlaying=()=>Array.from(document.querySelectorAll('video')).some(v=>!v.paused&&!v.ended);
+ const syncLabel=()=>{toggle.textContent=music.paused?'♫ Play music':'♫ Music on';toggle.setAttribute('aria-label',music.paused?'Turn background music on':'Turn background music off')};
+ const playIfAllowed=()=>{if(!wanted||videoIsPlaying())return;music.play().then(()=>{started=true;syncLabel()}).catch(()=>syncLabel())};
+ const firstGesture=()=>{if(!started&&wanted){playIfAllowed()}document.removeEventListener('pointerdown',firstGesture,true);document.removeEventListener('keydown',firstGesture,true)};
+ document.addEventListener('pointerdown',firstGesture,true);document.addEventListener('keydown',firstGesture,true);
+ toggle.addEventListener('click',()=>{if(!music.paused){wanted=false;music.pause();syncLabel()}else{wanted=true;started=true;playIfAllowed()}});
+ document.addEventListener('play',e=>{if(e.target instanceof HTMLVideoElement){music.pause();syncLabel()}},true);
+ const resume=()=>{if(started&&wanted&&!videoIsPlaying())playIfAllowed()};
+ document.addEventListener('pause',e=>{if(e.target instanceof HTMLVideoElement)resume()},true);
+ document.addEventListener('ended',e=>{if(e.target instanceof HTMLVideoElement)resume()},true);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)music.pause();else if(started)resume()});
+ syncLabel();
+})();
 </script></body></html>
