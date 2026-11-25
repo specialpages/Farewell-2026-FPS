@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farewell Class of 2026 ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   EASY SETTINGS: change colors here
+===================================================== */
+:root{
+  --bg:#0b0820; --bg2:#150f35;
+  --p1:#ff5fa2; --p2:#7c5cff; --p3:#2de2e6; --gold:#ffd166;
+  --glass:rgba(255,255,255,.07); --line:rgba(255,255,255,.15);
+  --text:#f4f1ff; --muted:#b9b2e0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;
+  background:radial-gradient(circle at 15% 20%,#3a1c7a55,transparent 45%),
+             radial-gradient(circle at 85% 70%,#ff5fa233,transparent 45%),
+             radial-gradient(circle at 50% 100%,#2de2e622,transparent 50%),var(--bg);}
+canvas#fx{position:fixed;inset:0;z-index:-1;pointer-events:none}
+h1,h2,h3{font-family:'Playfair Display',serif}
+section{padding:110px 6% 60px;position:relative}
+.grad{background:linear-gradient(90deg,var(--p1),var(--gold),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.title{text-align:center;margin-bottom:60px}
+.title small{letter-spacing:6px;color:var(--p3);text-transform:uppercase;font-size:.8rem}
+.title h2{font-size:clamp(2rem,5vw,3.6rem);margin-top:10px}
+.title p{color:var(--muted);max-width:620px;margin:14px auto 0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 6%;
+  backdrop-filter:blur(14px);background:rgba(11,8,32,.55);border-bottom:1px solid var(--line)}
+nav .logo{font-family:'Caveat',cursive;font-size:1.8rem;color:var(--gold)}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{color:var(--text);text-decoration:none;font-size:.85rem;opacity:.8;transition:.3s}
+nav a:hover{opacity:1;color:var(--p1)}
+@media(max-width:800px){nav ul{display:none}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:90px}
+.badge{border:1px solid var(--line);background:var(--glass);padding:8px 20px;border-radius:50px;font-size:.85rem;color:var(--gold);backdrop-filter:blur(10px);animation:float 4s ease-in-out infinite}
+#hero h1{font-size:clamp(3rem,11vw,8rem);line-height:1;margin:26px 0 10px;font-weight:900}
+#hero .sub{font-family:'Caveat',cursive;font-size:clamp(1.5rem,4vw,2.6rem);color:var(--p3)}
+#typed{min-height:1.6em;color:var(--muted);margin-top:18px;font-size:1.1rem}
+.cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 34px;border-radius:50px;border:none;font-weight:600;font-size:1rem;cursor:pointer;text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,var(--p1),var(--p2));box-shadow:0 10px 35px #7c5cff66;transition:.3s}
+.btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 16px 45px #ff5fa288}
+.btn.ghost{background:var(--glass);border:1px solid var(--line);box-shadow:none}
+.scroll{position:absolute;bottom:26px;font-size:.75rem;letter-spacing:3px;color:var(--muted);animation:float 2.2s infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);animation:float 7s ease-in-out infinite;opacity:.7}
+.orb.a{width:140px;height:140px;top:18%;left:8%;background:radial-gradient(circle at 30% 30%,#fff8,var(--p1) 40%,transparent 70%)}
+.orb.b{width:100px;height:100px;top:62%;right:10%;background:radial-gradient(circle at 30% 30%,#fff8,var(--p3) 40%,transparent 70%);animation-delay:-3s}
+.orb.c{width:70px;height:70px;top:30%;right:18%;background:radial-gradient(circle at 30% 30%,#fff8,var(--gold) 40%,transparent 70%);animation-delay:-5s}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+.stat{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:34px 20px;text-align:center;backdrop-filter:blur(12px);transition:.4s}
+.stat:hover{transform:translateY(-8px);border-color:var(--p1)}
+.stat b{font-size:3rem;font-family:'Playfair Display',serif;display:block}
+.stat span{color:var(--muted);font-size:.9rem}
+
+/* LETTER */
+.letter{max-width:800px;margin:0 auto;background:var(--glass);border:1px solid var(--line);border-radius:28px;padding:48px;backdrop-filter:blur(12px);line-height:1.9;color:#e5e0ff;position:relative}
+.letter::before{content:"“";position:absolute;top:-20px;left:30px;font-size:8rem;color:var(--p1);font-family:'Playfair Display',serif;opacity:.5}
+.letter .sign{font-family:'Caveat',cursive;font-size:2rem;color:var(--gold);margin-top:20px;text-align:right}
+
+/* CLASSMATES 3D */
+.filter{display:flex;justify-content:center;margin-bottom:40px}
+.filter input{width:min(420px,90%);padding:14px 24px;border-radius:50px;border:1px solid var(--line);background:var(--glass);color:var(--text);font-size:1rem;outline:none;backdrop-filter:blur(10px)}
+.filter input:focus{border-color:var(--p3);box-shadow:0 0 25px #2de2e633}
+.grid3d{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:36px;max-width:1300px;margin:0 auto;perspective:1400px}
+.card{height:370px;position:relative;transform-style:preserve-3d;transition:transform .15s ease-out;cursor:pointer}
+.card .inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.card.flip .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:26px;backface-visibility:hidden;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(160deg,#ffffff18,#ffffff05);backdrop-filter:blur(14px);box-shadow:0 25px 50px #0008}
+.front img{width:100%;height:78%;object-fit:cover;display:block;transform:translateZ(40px)}
+.front .info{position:absolute;bottom:0;left:0;right:0;height:22%;display:flex;flex-direction:column;justify-content:center;align-items:center;transform:translateZ(60px)}
+.front h3{font-size:1.25rem}
+.front small{color:var(--p3);font-size:.78rem}
+.glare{position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),#ffffff55,transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none;mix-blend-mode:overlay}
+.card:hover .glare{opacity:1}
+.card:hover .face{border-color:var(--p1);box-shadow:0 30px 70px #ff5fa244}
+.back{transform:rotateY(180deg);padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:linear-gradient(160deg,#7c5cff55,#ff5fa233)}
+.back h3{font-size:1.5rem;margin-bottom:10px}
+.back .nick{color:var(--gold);font-family:'Caveat',cursive;font-size:1.6rem}
+.back p{color:#eee;font-size:.9rem;margin-top:14px;line-height:1.6}
+.back .dream{margin-top:16px;font-size:.8rem;color:var(--p3)}
+.hint{text-align:center;color:var(--muted);font-size:.85rem;margin-top:36px}
+
+/* TIMELINE */
+.timeline{max-width:950px;margin:0 auto;position:relative}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(var(--p1),var(--p2),var(--p3));transform:translateX(-50%);border-radius:5px}
+.tl{width:50%;padding:0 46px 50px;position:relative}
+.tl:nth-child(even){margin-left:50%}
+.tl::after{content:"";position:absolute;top:14px;right:-9px;width:18px;height:18px;border-radius:50%;background:var(--gold);box-shadow:0 0 20px var(--gold)}
+.tl:nth-child(even)::after{left:-9px;right:auto}
+.tl .box{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:22px 26px;backdrop-filter:blur(12px);transition:.4s}
+.tl .box:hover{transform:scale(1.04) rotate(-1deg);border-color:var(--p3)}
+.tl .yr{color:var(--gold);font-size:.8rem;letter-spacing:3px}
+.tl h3{margin:6px 0;font-size:1.3rem}
+.tl p{color:var(--muted);font-size:.92rem;line-height:1.7}
+@media(max-width:700px){.timeline::before{left:12px}.tl,.tl:nth-child(even){width:100%;margin-left:0;padding:0 0 40px 40px}.tl::after,.tl:nth-child(even)::after{left:4px;right:auto}}
+
+/* GALLERY */
+.gallery{columns:4 240px;column-gap:20px;max-width:1300px;margin:0 auto}
+.gallery figure{break-inside:avoid;margin-bottom:20px;border-radius:20px;overflow:hidden;position:relative;cursor:zoom-in;border:1px solid var(--line);transition:.5s}
+.gallery figure:hover{transform:translateY(-8px) rotate(1deg) scale(1.02);box-shadow:0 25px 50px #7c5cff55}
+.gallery img{width:100%;display:block;transition:.6s}
+.gallery figure:hover img{transform:scale(1.1)}
+.gallery figcaption{position:absolute;bottom:0;left:0;right:0;padding:30px 16px 14px;background:linear-gradient(transparent,#000c);font-size:.85rem;opacity:0;transition:.4s}
+.gallery figure:hover figcaption{opacity:1}
+#lb{position:fixed;inset:0;background:#000e;z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+#lb.on{display:flex}
+#lb img{max-width:92%;max-height:80vh;border-radius:18px;box-shadow:0 0 80px #7c5cff88}
+#lb p{margin-top:16px;color:var(--gold);font-family:'Caveat',cursive;font-size:1.6rem}
+#lb .x{position:absolute;top:20px;right:30px;font-size:2.4rem;cursor:pointer}
+
+/* VIDEOS */
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto}
+.vid{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:14px;backdrop-filter:blur(12px);transition:.4s}
+.vid:hover{transform:translateY(-8px);border-color:var(--p1)}
+.vid video,.vid iframe{width:100%;aspect-ratio:16/9;border-radius:16px;background:#000;border:0;display:block}
+.vid h3{padding:14px 8px 4px;font-size:1.1rem}
+.vid p{padding:0 8px 8px;color:var(--muted);font-size:.85rem}
+
+/* WISHES */
+.wishform{max-width:680px;margin:0 auto 50px;display:grid;gap:14px}
+.wishform input,.wishform textarea{padding:15px 22px;border-radius:18px;border:1px solid var(--line);background:var(--glass);color:var(--text);font:inherit;outline:none}
+.wishform input:focus,.wishform textarea:focus{border-color:var(--p1)}
+.wishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px;max-width:1200px;margin:0 auto}
+.note{padding:24px;border-radius:6px 22px 22px 22px;color:#2a1a4a;font-family:'Caveat',cursive;font-size:1.4rem;line-height:1.4;box-shadow:0 14px 30px #0006;transition:.3s}
+.note:nth-child(4n+1){background:#ffd166;transform:rotate(-2deg)}
+.note:nth-child(4n+2){background:#ff9ec7;transform:rotate(1.5deg)}
+.note:nth-child(4n+3){background:#9ff3f5;transform:rotate(-1deg)}
+.note:nth-child(4n){background:#c7b6ff;transform:rotate(2deg)}
+.note:hover{transform:scale(1.07) rotate(0)}
+.note b{display:block;margin-top:12px;font-size:1.1rem;opacity:.7}
+
+/* FINALE */
+#finale{text-align:center;padding:140px 6%}
+#finale h2{font-size:clamp(2.4rem,7vw,5.5rem);line-height:1.1}
+#finale p{color:var(--muted);max-width:640px;margin:24px auto 40px;line-height:1.8}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+.reveal{opacity:0;transform:translateY(50px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<nav>
+  <div class="logo">Class of 2026 ✦</div>
+  <ul>
+    <li><a href="#letter">Letter</a></li>
+    <li><a href="#friends">Classmates</a></li>
+    <li><a href="#memories">Memories</a></li>
+    <li><a href="#gallery">Photos</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#wishes">Wishes</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  <div class="badge">🎓 Class 12 · Batch 2026 · Farewell Edition</div>
+  <h1 class="grad">Goodbye<br>School</h1>
+  <div class="sub">but never goodbye to us 💜</div>
+  <div id="typed"></div>
+  <div class="cta">
+    <a class="btn" href="#friends">Meet the Gang 👥</a>
+    <a class="btn ghost" href="#memories">Relive Memories ✨</a>
+    <button class="btn ghost" onclick="confetti()">🎉 Celebrate</button>
+  </div>
+  <div class="scroll">SCROLL ↓</div>
+</section>
+
+<!-- STATS -->
+<section>
+  <div class="title reveal"><small>Our Journey</small><h2 class="grad">Numbers That Mean Everything</h2></div>
+  <div class="stats reveal">
+    <div class="stat"><b class="grad" data-n="2">0</b><span>Years as a family</span></div>
+    <div class="stat"><b class="grad" data-n="40">0</b><span>Amazing classmates</span></div>
+    <div class="stat"><b class="grad" data-n="1000">0</b><span>Memories made</span></div>
+    <div class="stat"><b class="grad" data-n="9999">0</b><span>Laughs shared</span></div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="title reveal"><small>From the heart</small><h2 class="grad">A Letter to My Classmates</h2></div>
+  <div class="letter reveal">
+    <p>Dear friends, <br><br>
+    It feels like yesterday we walked into class as strangers, and today we are walking out as a family.
+    Thank you for the shared tiffins, last-bench jokes, bunked periods, exam-night panic, and the endless laughter.
+    Thank you for every time you lifted me up.<br><br>
+    Our school days are over, but the friendships will not be. Different colleges, different cities, different dreams,
+    but the same hearts. Keep in touch, call often, and never forget the people who knew you before you became who you will be.
+    <br><br>Wherever life takes us, remember: <i>we were here, together, and it was beautiful.</i></p>
+    <div class="sign">— Your Classmate ❤️</div>
+  </div>
+</section>
+
+<!-- CLASSMATES -->
+<section id="friends">
+  <div class="title reveal"><small>The Legends</small><h2 class="grad">Our Class 3D Wall</h2>
+    <p>Hover to tilt the cards in 3D. Tap or click a card to flip it and see their message!</p></div>
+  <div class="filter reveal"><input id="search" placeholder="🔍 Search a classmate..."></div>
+  <div class="grid3d" id="grid"></div>
+  <p class="hint">💡 Put photos in the <b>photos/</b> folder and edit the list in the code.</p>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <div class="title reveal"><small>Down Memory Lane</small><h2 class="grad">Moments We'll Never Forget</h2></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="title reveal"><small>Snapshots</small><h2 class="grad">Photo Gallery</h2><p>Click any photo to see it big.</p></div>
+  <div class="gallery" id="gal"></div>
+</section>
+<div id="lb" onclick="this.classList.remove('on')"><span class="x">×</span><img id="lbimg"><p id="lbcap"></p></div>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="title reveal"><small>Lights, Camera, Memories</small><h2 class="grad">Video Corner</h2></div>
+  <div class="videos" id="vids"></div>
+</section>
+
+<!-- WISHES -->
+<section id="wishes">
+  <div class="title reveal"><small>Leave your mark</small><h2 class="grad">Wishes Wall</h2>
+    <p>Write a message for the batch. (Notes save in your own browser.)</p></div>
+  <form class="wishform reveal" onsubmit="addWish(event)">
+    <input id="wn" placeholder="Your name" required maxlength="30">
+    <textarea id="wm" rows="3" placeholder="Write your wish or memory..." required maxlength="200"></textarea>
+    <button class="btn" type="submit">Stick it on the wall 📌</button>
+  </form>
+  <div class="wishes" id="wl"></div>
+</section>
+
+<!-- FINALE -->
+<section id="finale">
+  <h2 class="grad reveal">This isn't the end.<br>It's just the next chapter.</h2>
+  <p class="reveal">College will bring new faces, but you will always be the first family we made outside home. Shine bright, work hard, stay kind, and meet again someday, all of us, laughing like old times.</p>
+  <button class="btn reveal" onclick="confetti()">🎉 One Last Celebration!</button>
+</section>
+<footer>Made with 💜 by Class 12 · Batch 2026 · Forever Friends</footer>
+
+<script>
+/* =====================================================
+   ✏️ EDIT THIS PART — YOUR CLASS DATA
+   photo: put image files in the "photos" folder
+===================================================== */
+const CLASSMATES = [
+  {name:"Aarav Sharma", nick:"The Topper", msg:"Never forget our last bench gang!", dream:"Engineer 🚀", photo:"photos/aarav.jpg"},
+  {name:"Priya Singh", nick:"Queen Bee", msg:"Thanks for all the notes and laughs!", dream:"Doctor 🩺", photo:"photos/priya.jpg"},
+  {name:"Rohan Verma", nick:"Joker", msg:"Stay crazy, stay in touch!", dream:"Entrepreneur 💼", photo:"photos/rohan.jpg"},
+  {name:"Ananya Gupta", nick:"Artist", msg:"Our memories are my best artwork.", dream:"Designer 🎨", photo:"photos/ananya.jpg"},
+  {name:"Kabir Mehta", nick:"Sportsman", msg:"Match khatam, dosti nahi!", dream:"Athlete 🏏", photo:"photos/kabir.jpg"},
+  {name:"Isha Patel", nick:"Sweetheart", msg:"You all are my family.", dream:"Lawyer ⚖️", photo:"photos/isha.jpg"},
+  {name:"Vihaan Rao", nick:"Techie", msg:"Will build something big, with you!", dream:"Developer 💻", photo:"photos/vihaan.jpg"},
+  {name:"Meera Nair", nick:"Singer", msg:"Every song reminds me of you all.", dream:"Singer 🎤", photo:"photos/meera.jpg"}
+  // ➕ copy a line above to add more classmates
+];
+
+const MEMORIES = [
+  {yr:"DAY 1", t:"Strangers in a Classroom", d:"Nervous smiles, new uniforms and the first seat choices that became permanent."},
+  {yr:"CLASS 11", t:"The Bench Wars", d:"Back benchers vs front benchers. Legendary. Nobody won, everybody laughed."},
+  {yr:"TRIP", t:"The Unforgettable Picnic", d:"Songs, selfies, snacks and a bus ride that never felt long enough."},
+  {yr:"FESTIVALS", t:"Annual Day & Celebrations", d:"Dance rehearsals, last-minute costumes and the stage lights we'll always remember."},
+  {yr:"BOARDS", t:"Exam Season Survivors", d:"Late-night calls, shared notes, and the courage we gave each other."},
+  {yr:"LAST DAY", t:"Farewell & Tears", d:"Signatures on shirts, group hugs, and promises to never lose touch."}
+];
+
+const GALLERY = [
+  {src:"photos/g1.jpg", cap:"Class picnic 🌳"},
+  {src:"photos/g2.jpg", cap:"Annual day 🎭"},
+  {src:"photos/g3.jpg", cap:"Last bench gang 😎"},
+  {src:"photos/g4.jpg", cap:"Teachers' Day 🎁"},
+  {src:"photos/g5.jpg", cap:"Sports day 🏆"},
+  {src:"photos/g6.jpg", cap:"Farewell day 💜"},
+  {src:"photos/g7.jpg", cap:"Lunch break fun 🍱"},
+  {src:"photos/g8.jpg", cap:"Group selfie 🤳"}
+];
+
+/* type "file" for your own video in the videos folder (keep each under 100 MB for GitHub),
+   or type "youtube" and put only the video ID in src */
+const VIDEOS = [
+  {type:"file", src:"videos/memories.mp4", title:"Our Memories Reel 🎬", desc:"All the best moments in one video."},
+  {type:"file", src:"videos/farewell.mp4", title:"Farewell Day Highlights 🎉", desc:"The last day we'll never forget."}
+  // {type:"youtube", src:"YOUTUBE_VIDEO_ID", title:"Class Song", desc:"Our anthem"}
+];
+
+const TYPED_LINES = ["Two years. One family. Countless memories.", "From bunking classes to chasing dreams.", "We came as strangers, we leave as family.", "College awaits, but you'll always be home to me."];
+
+/* =====================================================
+   CODE (no need to edit below)
+===================================================== */
+const colors = ["#ff5fa2","#7c5cff","#2de2e6","#ffd166"];
+function ph(text, i=0){ // colorful fallback if photo is missing
+  const c1=colors[i%4], c2=colors[(i+1)%4];
+  const ini = text.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='500' height='600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${c1}'/><stop offset='1' stop-color='${c2}'/></linearGradient></defs><rect width='100%' height='100%' fill='url(#g)'/><text x='50%' y='54%' font-size='150' font-family='Georgia' fill='white' text-anchor='middle' opacity='.9'>${ini}</text></svg>`;
+  return "data:image/svg+xml;utf8,"+encodeURIComponent(svg);
+}
+
+/* Classmate cards */
+const grid=document.getElementById("grid");
+function renderCards(list){
+  grid.innerHTML="";
+  list.forEach((c,i)=>{
+    const el=document.createElement("div");
+    el.className="card reveal";
+    el.innerHTML=`<div class="inner">
+      <div class="face front"><img src="${c.photo}" alt="${c.name}" loading="lazy" onerror="this.onerror=null;this.src=ph('${c.name}',${i})">
+        <div class="info"><h3>${c.name}</h3><small>${c.nick}</small></div><div class="glare"></div></div>
+      <div class="face back"><div class="nick">${c.nick}</div><h3>${c.name}</h3><p>“${c.msg}”</p><div class="dream">Dream: ${c.dream}</div></div>
+    </div>`;
+    el.addEventListener("click",()=>el.classList.toggle("flip"));
+    el.addEventListener("mousemove",e=>{
+      const r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      el.style.transform=`rotateY(${(x-.5)*26}deg) rotateX(${(.5-y)*26}deg) scale(1.05)`;
+      el.querySelector(".glare").style.setProperty("--gx",x*100+"%");
+      el.querySelector(".glare").style.setProperty("--gy",y*100+"%");
+    });
+    el.addEventListener("mouseleave",()=>el.style.transform="");
+    grid.appendChild(el); io.observe(el);
+  });
+}
+document.getElementById("search").addEventListener("input",e=>{
+  const q=e.target.value.toLowerCase();
+  renderCards(CLASSMATES.filter(c=>(c.name+c.nick).toLowerCase().includes(q)));
+});
+
+/* Timeline */
+const tl=document.getElementById("timeline");
+MEMORIES.forEach(m=>{
+  const d=document.createElement("div");d.className="tl reveal";
+  d.innerHTML=`<div class="box"><div class="yr">${m.yr}</div><h3>${m.t}</h3><p>${m.d}</p></div>`;
+  tl.appendChild(d);
+});
+
+/* Gallery + lightbox */
+const gal=document.getElementById("gal");
+GALLERY.forEach((g,i)=>{
+  const f=document.createElement("figure");f.className="reveal";
+  f.innerHTML=`<img src="${g.src}" alt="${g.cap}" loading="lazy" style="aspect-ratio:${[4/5,1,3/4,5/4][i%4]};object-fit:cover" onerror="this.onerror=null;this.src=ph('${g.cap.replace(/'/g,"")}',${i})"><figcaption>${g.cap}</figcaption>`;
+  f.onclick=()=>{const im=f.querySelector("img");lbimg.src=im.src;lbcap.textContent=g.cap;lb.classList.add("on")};
+  gal.appendChild(f);
+});
+
+/* Videos */
+const vids=document.getElementById("vids");
+VIDEOS.forEach(v=>{
+  const d=document.createElement("div");d.className="vid reveal";
+  const media = v.type==="youtube"
+    ? `<iframe src="https://www.youtube.com/embed/${v.src}" allowfullscreen loading="lazy"></iframe>`
+    : `<video controls preload="metadata" src="${v.src}"></video>`;
+  d.innerHTML=`${media}<h3>${v.title}</h3><p>${v.desc}</p>`;
+  vids.appendChild(d);
+});
+
+/* Wishes wall */
+const wl=document.getElementById("wl");
+const defaults=[{n:"Class 12",m:"We made it! Proud of every one of us 🎓"},{n:"Someone special",m:"Thanks for being my favourite part of school ❤️"},{n:"Last bencher",m:"Bunking was great, but you were greater 😄"}];
+function loadWishes(){try{return JSON.parse(localStorage.getItem("wishes"))||defaults}catch(e){return defaults}}
+function drawWishes(){wl.innerHTML="";loadWishes().forEach(w=>{const n=document.createElement("div");n.className="note";n.textContent=w.m;const b=document.createElement("b");b.textContent="— "+w.n;n.appendChild(b);wl.appendChild(n)})}
+function addWish(e){e.preventDefault();const a=loadWishes();a.unshift({n:wn.value,m:wm.value});try{localStorage.setItem("wishes",JSON.stringify(a))}catch(_){}
+  drawWishes();e.target.reset();confetti()}
+
+/* Scroll reveal */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("show");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* Counters */
+const co=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;const el=x.target,n=+el.dataset.n;let c=0;const s=Math.max(1,n/80);
+  const t=setInterval(()=>{c+=s;if(c>=n){c=n;clearInterval(t)}el.textContent=Math.floor(c).toLocaleString()+(n>=1000?"+":"")},25);co.unobserve(el)}),{threshold:.5});
+document.querySelectorAll("[data-n]").forEach(el=>co.observe(el));
+
+/* Typing effect */
+let li=0,ci=0,del=false;const ty=document.getElementById("typed");
+(function type(){const s=TYPED_LINES[li];ty.textContent=s.slice(0,ci)+"|";
+  if(!del&&ci<s.length){ci++;setTimeout(type,60)}
+  else if(!del){del=true;setTimeout(type,1600)}
+  else if(ci>0){ci--;setTimeout(type,30)}
+  else{del=false;li=(li+1)%TYPED_LINES.length;setTimeout(type,300)}})();
+
+/* Background particles + confetti */
+const cv=document.getElementById("fx"),cx=cv.getContext("2d");let W,H;
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener("resize",rs);
+const stars=Array.from({length:90},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.3,s:Math.random()*.4+.1,c:colors[Math.floor(Math.random()*4)]}));
+let bits=[];
+function confetti(){for(let i=0;i<160;i++)bits.push({x:W/2,y:H/2,vx:(Math.random()-.5)*18,vy:Math.random()*-16-4,w:Math.random()*9+4,h:Math.random()*6+3,c:colors[Math.floor(Math.random()*4)],a:Math.random()*6,life:160})}
+(function loop(){cx.clearRect(0,0,W,H);
+  stars.forEach(p=>{p.y-=p.s;if(p.y<0){p.y=H;p.x=Math.random()*W}cx.globalAlpha=.6;cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill()});
+  bits.forEach(b=>{b.x+=b.vx;b.y+=b.vy;b.vy+=.35;b.a+=.2;b.life--;cx.save();cx.globalAlpha=Math.max(b.life/160,0);cx.translate(b.x,b.y);cx.rotate(b.a);cx.fillStyle=b.c;cx.fillRect(-b.w/2,-b.h/2,b.w,b.h);cx.restore()});
+  bits=bits.filter(b=>b.life>0);requestAnimationFrame(loop)})();
+
+renderCards(CLASSMATES);drawWishes();
+</script>
+</body>
+</html>
